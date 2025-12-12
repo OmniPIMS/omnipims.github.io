@@ -1,37 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>OmniPIMS Demo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { background: #0f1116; color: #e8e8e8; }
-    .container { padding-top: 60px; }
-    a { color: #3ecf8e; }
-  </style>
-</head>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style> body{ background:#0F1117; color:#fff; font-family:Inter,system-ui; } .muted{ color:#AAB3C0; }</style>
+</head><body>
+  <div class="container py-5">
+    <a href="/" class="btn btn-sm btn-outline-light mb-3">← Back to Home</a>
+    <h1>Demo — Create a Product Schema</h1>
+    <p class="muted">This demo is a simple client-side playground. It demonstrates the idea: define a schema and create an entity.</p>
 
-<body>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card p-3" style="background:#0b0e12;border:1px solid rgba(255,255,255,0.03);">
+          <h5>Schema editor (client-side)</h5>
+          <label class="form-label">Schema name</label>
+          <input id="schemaName" class="form-control mb-2" placeholder="product" />
+          <label class="form-label">Fields (JSON)</label>
+          <textarea id="schemaFields" class="form-control mb-2" rows="6">[{"name":"name","type":"string"},{"name":"sku","type":"string"},{"name":"price","type":"number"}]</textarea>
+          <button id="createSchema" class="btn btn-success">Simulate create schema</button>
+          <div id="log" class="mt-3 muted"></div>
+        </div>
+      </div>
 
-  <div class="container">
-    <h1 class="fw-bold">OmniPIMS Demo</h1>
-    <p class="text-muted">This demo will showcase how to create schemas and entities visually.</p>
-
-    <div class="mt-5 p-4 border rounded" style="background:#1a1d24;">
-      <h5 class="fw-bold">Example: Product Schema</h5>
-      <ul>
-        <li>Name: String</li>
-        <li>SKU: String</li>
-        <li>Price: Number</li>
-        <li>Attributes: Dynamic Fields</li>
-      </ul>
+      <div class="col-md-6">
+        <div class="card p-3" style="background:#0b0e12;border:1px solid rgba(255,255,255,0.03);">
+          <h5>Entity builder</h5>
+          <label class="form-label">Example JSON for entity</label>
+          <textarea id="entityJson" class="form-control mb-2" rows="8">{"name":"Example product","sku":"EX-01","price":19.99}</textarea>
+          <button id="createEntity" class="btn btn-primary">Simulate create entity</button>
+          <div id="entityLog" class="mt-3 muted"></div>
+        </div>
+      </div>
     </div>
 
-    <a href="/" class="mt-4 d-inline-block">← Back to Home</a>
+    <script>
+      document.getElementById('createSchema').addEventListener('click', ()=> {
+        const name = document.getElementById('schemaName').value || 'product';
+        const fields = document.getElementById('schemaFields').value;
+        try {
+          const json = JSON.parse(fields);
+          document.getElementById('log').innerText = 'Schema "'+name+'" simulated (fields: '+json.length+') — In full product this would POST /api/schemas';
+        } catch(e){
+          document.getElementById('log').innerText = 'Invalid JSON in fields';
+        }
+      });
+
+      document.getElementById('createEntity').addEventListener('click', ()=> {
+        const ej = document.getElementById('entityJson').value;
+        try {
+          const obj = JSON.parse(ej);
+          document.getElementById('entityLog').innerText = 'Entity simulated: ' + JSON.stringify(obj);
+        } catch(e){
+          document.getElementById('entityLog').innerText = 'Invalid JSON for entity';
+        }
+      });
+    </script>
   </div>
-
-</body>
-
-</html>
+</body></html>
