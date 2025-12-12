@@ -1,47 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OmniPIMS – Universal Parameterized Framework</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OmniPIMS — Universal Parameterized Framework</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
-    body {
-      background: #0f1116;
-      color: #f2f2f2;
-      font-family: system-ui, sans-serif;
+    :root{
+      --bg:#0F1117;
+      --muted:#AAB3C0;
+      --accent1:#4DE3B7;
+      --accent2:#3ECF8E;
+      --accent3:#1D6FE9;
     }
-
-    .hero {
-      padding: 120px 0;
-      text-align: center;
+    body{ background:var(--bg); color:#fff; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .nav a{ color: rgba(255,255,255,0.85); text-decoration:none; margin-right:20px; }
+    .hero{
+      padding:96px 0;
+      background: linear-gradient(180deg, rgba(29,111,233,0.06) 0%, transparent 35%);
     }
+    .card-plate{ background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.03); border-radius:12px; padding:22px; }
+    .cta{ background: linear-gradient(90deg,var(--accent2),var(--accent3)); color:#06121a; border-radius:10px; padding:10px 20px; font-weight:700; }
+    .logo-inline { display:flex; align-items:center; gap:18px; }
+    .logo-inline h1{ margin:0; font-size:28px; letter-spacing:0.4px; font-weight:700; color:#fff; }
+    footer{ color:var(--muted); padding:36px 0; }
+  </style>
+</head>
+<body>
+  <div class="container py-4 d-flex justify-content-between align-items-center">
+    <!-- logo wordmark inline (svg) -->
+    <div class="logo-inline">
+      <!-- inline small logo: use opims-gradient svg but small -->
+      <svg width="48" height="48" viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" x2="0" y1="0" y2="190"><stop offset="0" stop-color="#4DE3B7"/><stop offset="0.45" stop-color="#3ECF8E"/><stop offset="1" stop-color="#1D6FE9"/></linearGradient></defs>
+        <rect width="190" height="190" rx="14" fill="url(#g1)"/>
+        <path d="M97.0892 39.0001C94.6713 39.0129 92.2541 39.0235 89.8361 39.0128C74.4477 38.9318 63.182 40.2337 51.4701 51.0079C41.1764 61.8828 39.8773 74.4752 40.0084 88.7761C40.0247 90.4815 40.0354 92.187 40.0409 93.8925C40.0487 98.3795 40.0665 102.866 40.0993 107.353C40.1334 111.996 40.1545 116.639 40.1701 121.282C40.2026 131.279 40.2576 141.276 40.3256 151.274H57.3256C57.4238 142.333 57.5247 133.393 57.6322 124.453L57.6451 123.393C57.696 119.188 57.747 114.984 57.7934 110.779C57.8416 106.314 57.8911 101.849 57.9462 97.3838C57.9613 96.2486 58.1054 83.817 58.1203 82.7042C58.1793 75.5614 58.9217 70.1496 63.3256 64.2735C71.3259 56.4861 79.6605 56.033 90.3998 56.0489C92.4317 56.0679 94.4631 56.086 96.495 56.0882C106.217 56.0871 114.959 55.5851 123.119 61.5938C129.92 67.134 134.647 74.0729 135.615 82.9142C135.893 91.9797 133.85 99.315 128.122 106.418C121.129 113.64 112.955 116.372 103.083 116.653C101.44 116.684 90.4826 116.918 88.8397 116.956C86.46 117.014 84.0804 117.071 81.7006 117.125L74.3256 117.274V133.274L74.921 133.276C79.0091 133.294 83.0969 133.313 87.185 133.322C88.9402 133.326 90.6954 133.331 92.4506 133.336C95.0281 133.349 97.6055 133.361 100.183 133.367L102.646 133.371C117.108 133.467 128.108 130.06 138.783 119.945C147.412 110.844 152.553 100.596 152.599 87.9181L152.576 85.7735C152.716 72.9512 148.598 62.5175 139.826 53.0235C127.6 41.4606 113.31 38.9826 97.0892 39.0001Z" fill="#fff"/>
+      </svg>
 
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-    }
+      <div>
+        <h1 style="font-size:18px; margin:0;">OmniPIMS</h1>
+        <div style="font-size:12px; color:var(--muted);">Universal framework to model any product, catalog or entity</div>
+      </div>
+    </div>
 
-    .section {
-      padding: 80px 0;
-    }
+    <div class="nav">
+      <a href="/docs/">Docs</a>
+      <a href="/api/">API</a>
+      <a href="/demo/">Demo</a>
+      <a href="https://github.com/OmniPIMS" class="btn btn-outline-light btn-sm ms-3">GitHub</a>
+    </div>
+  </div>
 
-    .main-btn {
-      background-color: #3ecf8e;
-      border: none;
-      padding: 12px 28px;
-      color: #000;
-      border-radius: 8px;
-      font-weight: 600;
-    }
+  <main class="container hero text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 style="font-size:40px; font-weight:800; margin-bottom:18px;">Build dynamic products, catalogs & entities.</h2>
+        <p style="font-size:18px; color:var(--muted)">OmniPIMS is an open-source, schema-driven engine that allows organizations to model any structured domain without changing backend code.</p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+          <a href="/docs/" class="cta">Read the docs</a>
+          <a href="https://github.com/OmniPIMS/omni-pims-backend" class="btn btn-outline-light">Explore GitHub</a>
+        </div>
+      </div>
+    </div>
 
-    a {
-      text-decoration: none;
-      color: #3ecf8e;
-    }
+    <div class="row mt-5 g-4 justify-content-center">
+      <div class="col-md-3">
+        <div class="card-plate">
+          <h5>Dynamic Schemas</h5>
+          <p class="mb-0">No migrations: edit schemas at runtime and generate APIs automatically.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-plate">
+          <h5>Universal Modeling</h5>
+          <p class="mb-0">Model products, properties, policies, services and more using the same engine.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-plate">
+          <h5>Enterprise Ready</h5>
+          <p class="mb-0">Docker, Helm-ready, plugin architecture for enterprise modules.</p>
+        </div>
+      </div>
+    </div>
+  </main>
 
-    footer {
-      padding: 40px 0;
-      text-align: center;
-      bor
+  <footer class="container text-center">
+    <p style="margin-top:48px; color:var(--muted)">© 2025 OmniPIMS — Open Source & Enterprise Ready</p>
+  </footer>
+</body>
+</html>
